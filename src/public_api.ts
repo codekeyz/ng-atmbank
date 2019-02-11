@@ -3,5 +3,5 @@
  */
 
 export * from './lib/bank.service';
-export * from './lib/bank.component';
+export * from './lib/bank-auth.service';
 export * from './lib/bank.module';
