@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BankData, PaginatedData, ATMData, ManagerData } from './bank.models';
+import {
+  BankData,
+  PaginatedData,
+  ATMData,
+  ManagerData,
+  Data
+} from './bank.models';
 
 @Injectable()
 export class BankService {
   private ourBaseUrl = 'https://atm-hotspot-backend.herokuapp.com';
   constructor(private http: HttpClient) {}
 
-  getMyAccount(): Observable<BankData> {
-    return this.http.get<BankData>(`${this.ourBaseUrl}/banks/me`);
+  getMyAccount(): Observable<Data<BankData>> {
+    return this.http.get<Data<BankData>>(`${this.ourBaseUrl}/banks/me`);
   }
 
   getATMs(

@@ -31,12 +31,13 @@ interface Links {
 }
 
 export interface BankData {
-  id: number;
   name: string;
   email: string;
-  desc: string;
+  slogan: string;
   country: string;
   city: string;
+  total_atms: number;
+  total_managers: number;
 }
 
 export interface ATMData {
