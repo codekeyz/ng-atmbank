@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BankService } from './bank.service';
@@ -6,6 +6,10 @@ import { BankAuthService } from './bank-auth.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
+}
+
+export interface Config {
+  isDevMode: boolean;
 }
 
 @NgModule({
@@ -25,7 +29,20 @@ export function tokenGetter() {
         ]
       }
     })
-  ],
-  providers: [BankService, BankAuthService]
+  ]
 })
-export class BankModule {}
+export class BankModule {
+  static forRoot(config: Config): ModuleWithProviders {
+    return {
+      ngModule: BankModule,
+      providers: [
+        BankService,
+        BankAuthService,
+        {
+          provide: 'config',
+          useValue: config
+        }
+      ]
+    };
+  }
+}
