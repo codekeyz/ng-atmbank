@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Config } from './bank.module';
 import {
   BankData,
   PaginatedData,
@@ -11,8 +12,16 @@ import {
 
 @Injectable()
 export class BankService {
-  private ourBaseUrl = 'https://atm-hotspot-backend.herokuapp.com';
-  constructor(private http: HttpClient) {}
+  private ourBaseUrl = '';
+
+  constructor(
+    @Inject('config') private config: Config,
+    private http: HttpClient
+  ) {
+    config.isDevMode === true
+      ? (this.ourBaseUrl = 'https://atm-hotspot-backend.herokuapp.com')
+      : (this.ourBaseUrl = 'http://127.0.0.1:8000');
+  }
 
   getMyAccount(): Observable<Data<BankData>> {
     return this.http.get<Data<BankData>>(`${this.ourBaseUrl}/banks/me`);

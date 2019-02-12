@@ -1,14 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthResponse } from './bank.models';
+import { Config } from './bank.module';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BankAuthService {
-  private ourBaseUrl = 'https://atm-hotspot-backend.herokuapp.com';
+  private ourBaseUrl = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    @Inject('config') private config: Config,
+    private http: HttpClient
+  ) {
+    config.isDevMode === true
+      ? (this.ourBaseUrl = 'https://atm-hotspot-backend.herokuapp.com')
+      : (this.ourBaseUrl = 'http://127.0.0.1:8000');
+  }
 
   logout(): void {
     localStorage.removeItem('access_token');
