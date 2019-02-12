@@ -61,7 +61,9 @@ export interface ATMQuery {
 }
 
 export interface ManagerData {
+  id: number;
   name: string;
   email: string;
-  bank_id: string;
+  created_at: Date;
+  updated_at: Date;
 }
