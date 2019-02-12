@@ -43,6 +43,10 @@ export class BankService {
     return this.http.post<ATMData>(`${this.ourBaseUrl}/banks/me/atms`, $data);
   }
 
+  deleteATM(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.ourBaseUrl}/banks/me/atms/${id}`);
+  }
+
   getManagers(
     url: string = `${this.ourBaseUrl}/banks/me/managers`
   ): Observable<PaginatedData<ManagerData>> {

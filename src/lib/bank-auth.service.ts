@@ -20,8 +20,8 @@ export class BankAuthService {
       : (this.ourBaseUrl = 'http://127.0.0.1:8000');
   }
 
-  logout(): void {
-    localStorage.removeItem('access_token');
+  async logout() {
+    await localStorage.removeItem('access_token');
   }
 
   login(email: string, password: string): Observable<AuthResponse> {
