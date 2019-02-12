@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Config } from './bank.module';
 import {
-  BankData,
-  PaginatedData,
   ATMData,
+  BankData,
+  Data,
   ManagerData,
-  Data
+  PaginatedData
 } from './bank.models';
 
 @Injectable()
@@ -39,17 +39,35 @@ export class BankService {
     city: string;
     lat: number;
     lng: number;
-  }): Observable<ATMData> {
-    return this.http.post<ATMData>(`${this.ourBaseUrl}/banks/me/atms`, $data);
+  }): Observable<Data<ATMData>> {
+    return this.http.post<Data<ATMData>>(
+      `${this.ourBaseUrl}/banks/me/atms`,
+      $data
+    );
   }
 
-  deleteATM(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.ourBaseUrl}/banks/me/atms/${id}`);
+  deleteATM(id: string) {
+    return this.http.delete(`${this.ourBaseUrl}/banks/me/atms/${id}`);
   }
 
   getManagers(
     url: string = `${this.ourBaseUrl}/banks/me/managers`
   ): Observable<PaginatedData<ManagerData>> {
     return this.http.get<PaginatedData<ManagerData>>(url);
+  }
+
+  addManager($data: {
+    name: string;
+    email: string;
+    password: string;
+  }): Observable<Data<ManagerData>> {
+    return this.http.post<Data<ManagerData>>(
+      `${this.ourBaseUrl}/banks/me/managers`,
+      $data
+    );
+  }
+
+  deleteManager(id: string) {
+    return this.http.delete(`${this.ourBaseUrl}/banks/me/managers/${id}`);
   }
 }
