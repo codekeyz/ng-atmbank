@@ -3,6 +3,10 @@
   "dest": "../../../dist/atmhotspot/bank",
   "lib": {
     "entryFile": "src/public_api.ts",
-    "umdModuleIds": { "@auth0/angular-jwt": "angularJWT" }
+    "umdModuleIds": {
+      "@auth0/angular-jwt": "angularJWT",
+      "ngx-stripe": "ngx-stripe",
+      "@auth0/angular-jwt/src/jwthelper.service": "jwthelper-service"
+    }
   }
 }
