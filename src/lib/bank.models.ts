@@ -8,6 +8,7 @@ export interface Data<T> {
 }
 
 export interface AuthResponse {
+  user: BankData;
   access_token: string;
   token: string;
   expires_in: number;
@@ -53,11 +54,6 @@ export interface ATMData {
 export interface Coordinate {
   lat: number;
   lng: number;
-}
-
-export interface ATMQuery {
-  id?: string;
-  name?: string;
 }
 
 export interface ManagerData {
