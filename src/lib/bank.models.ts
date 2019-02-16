@@ -63,3 +63,13 @@ export interface ManagerData {
   created_at: Date;
   updated_at: Date;
 }
+
+export interface PlanData {
+  id: string;
+  amount: number;
+  billing_scheme: string;
+  currency: string;
+  interval: string;
+  interval_count: string;
+  nickname: string;
+}
