@@ -1,7 +1,6 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {JwtModule} from '@auth0/angular-jwt';
-import {NgxStripeModule} from 'ngx-stripe';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -12,10 +11,8 @@ export interface Config {
 }
 
 @NgModule({
-  exports: [],
   imports: [
     HttpClientModule,
-    NgxStripeModule.forRoot('pk_test_qCMHKLE6spBRdqDqdC48sEHS'),
     JwtModule.forRoot({
       config: {
         tokenGetter,
