@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {BankModule, Config} from '../modules/bank.module';
-import {ATMData, BankData, Data, ManagerData, PaginatedData} from '../bank.models';
+import {APIResponse, ATMData, BankData, BranchData, Data, ManagerData, PaginatedData} from '../bank.models';
 
 @Injectable({
   providedIn: BankModule
@@ -23,10 +23,43 @@ export class BankService {
     return this.http.get<Data<BankData>>(`${this.ourBaseUrl}/banks/me`);
   }
 
+  getBranches(url: string = `${this.ourBaseUrl}/banks/me/branches`): Observable<PaginatedData<BranchData>> {
+    return this.http.get<PaginatedData<BranchData>>(url);
+  }
+
+  getBranch(id: string): Observable<PaginatedData<BranchData>> {
+    return this.http.get<PaginatedData<BranchData>>(`${this.ourBaseUrl}/banks/me/branches/${id}`);
+  }
+
+  addBranch($data: {
+    name: string,
+    city: string,
+    town?: string
+  }): Observable<Data<BranchData>> {
+    return this.http.post<Data<BranchData>>(`${this.ourBaseUrl}/banks/me/branches`, $data);
+  }
+
+  updateBranch(id: string, $data: {
+    name?: string,
+    city?: string,
+    town?: string
+  }): Observable<Data<BranchData>> {
+    return this.http.put<Data<BranchData>>(`${this.ourBaseUrl}/banks/me/branches/${id}`, $data);
+  }
+
+  deleteBranch(id: string): Observable<APIResponse> {
+    return this.http.delete<APIResponse>(`${this.ourBaseUrl}/banks/me/branches/${id}`);
+  }
+
   getATMs(
     url: string = `${this.ourBaseUrl}/banks/me/atms`
   ): Observable<PaginatedData<ATMData>> {
     return this.http.get<PaginatedData<ATMData>>(url);
+  }
+
+
+  getATM(id: string): Observable<Data<ATMData>> {
+    return this.http.get<Data<ATMData>>(`${this.ourBaseUrl}/banks/me/atms/${id}`);
   }
 
   addATM($data: {
@@ -58,14 +91,18 @@ export class BankService {
     );
   }
 
-  deleteATM(id: string) {
-    return this.http.delete(`${this.ourBaseUrl}/banks/me/atms/${id}`);
+  deleteATM(id: string): Observable<APIResponse> {
+    return this.http.delete<APIResponse>(`${this.ourBaseUrl}/banks/me/atms/${id}`);
   }
 
   getManagers(
     url: string = `${this.ourBaseUrl}/banks/me/managers`
   ): Observable<PaginatedData<ManagerData>> {
     return this.http.get<PaginatedData<ManagerData>>(url);
+  }
+
+  getManager(id: string): Observable<PaginatedData<ManagerData>> {
+    return this.http.get<PaginatedData<ManagerData>>(`${this.ourBaseUrl}/banks/me/managers/${id}`);
   }
 
   addManager($data: {
@@ -92,7 +129,7 @@ export class BankService {
     );
   }
 
-  deleteManager(id: string) {
-    return this.http.delete(`${this.ourBaseUrl}/banks/me/managers/${id}`);
+  deleteManager(id: string): Observable<APIResponse> {
+    return this.http.delete<APIResponse>(`${this.ourBaseUrl}/banks/me/managers/${id}`);
   }
 }
