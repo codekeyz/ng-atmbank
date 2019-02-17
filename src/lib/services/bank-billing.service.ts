@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BankModule, Config } from '../modules/bank.module';
-import { PlanData } from '../bank.models';
+import { PlanData, Data } from '../bank.models';
 
 @Injectable({
   providedIn: BankModule
@@ -19,7 +19,7 @@ export class BankBillingService {
       : (this.ourBaseUrl = 'http://127.0.0.1:8000');
   }
 
-  getPlans(): Observable<PlanData[]> {
-    return this.http.get<PlanData[]>(`${this.ourBaseUrl}/banks/plans`);
+  getPlans(): Observable<Data<PlanData[]>> {
+    return this.http.get<Data<PlanData[]>>(`${this.ourBaseUrl}/banks/plans`);
   }
 }
