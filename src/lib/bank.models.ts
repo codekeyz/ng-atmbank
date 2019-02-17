@@ -1,17 +1,10 @@
-export interface PaginatedData<T> extends Data<T[]> {
-  links: Links;
-  meta: Meta;
-}
-
 export interface Data<T> {
   data: T;
 }
 
-export interface AuthResponse {
-  user: BankData;
-  access_token: string;
-  token: string;
-  expires_in: number;
+export interface PaginatedData<T> extends Data<T[]> {
+  links: Links;
+  meta: Meta;
 }
 
 interface Meta {
@@ -39,6 +32,15 @@ export interface BankData {
   city: string;
   total_atms: number;
   total_managers: number;
+}
+
+export interface BranchData {
+  id: number;
+  name: string;
+  city: string;
+  town: string;
+  total_managers: number;
+  total_atms: number;
 }
 
 export interface ATMData {
@@ -72,4 +74,20 @@ export interface PlanData {
   interval: string;
   interval_count: string;
   nickname: string;
+  metadata: {
+    desc: string;
+  };
+}
+
+export interface AuthResponse {
+  user: BankData;
+  access_token: string;
+  token: string;
+  expires_in: number;
+}
+
+export interface APIResponse {
+  success: boolean;
+  errorMessage: string;
+  errorCode: number;
 }
