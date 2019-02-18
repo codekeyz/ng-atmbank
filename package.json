@@ -25,5 +25,6 @@
     "rxjs": "6.3.3",
     "@auth0/angular-jwt": "^2.1.0"
   },
-  "main": "karma.conf.js"
+  "main": "karma.conf.js",
+  "dependencies": {}
 }
