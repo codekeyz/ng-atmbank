@@ -6,34 +6,33 @@
 ## Installation
 
 ```bash
-npm i @keyz/ng-atmhotspot-bank
+npm i @codekeyz/ng-atmbank
 ```
 
 ## Example use:
 
-Inside your ```app.module.ts``` file, add this
+Inside your `app.module.ts` file, add this
 
 ```typescript
-import { BankModule } from '@keyz/ng-atmhotspot-bank';
+import { BankModule } from '@codekeyz/ng-atmbank';
 import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],
   imports: [
-     BankModule.forRoot({
-        isDevMode:false
-     }),
+    BankModule.forRoot({
+      isDevMode: false
+    })
   ]
 })
-
 export class AppModule {}
 ```
 
-You can now access ```BankAuthService```, ```BankService```, ```BankAuthService``` anywhere in your app.
+You can now access `BankAuthService`, `BankService`, `BankAuthService` anywhere in your app.
 
 ```typescript
-import {BankService} from '@keyz/ng-atmhotspot-bank';
-import {Component, OnInit} from '@angular/core';
+import { BankService } from '@codekeyz/ng-atmbank';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,13 +40,12 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
- constructor(private dataSvc: BankService) {}
- 
- ngOnInit() {}
+  constructor(private dataSvc: BankService) {}
 
+  ngOnInit() {}
 }
 ```
+
 ## Further help
 
 Official Documentation will be available pretty soon.
