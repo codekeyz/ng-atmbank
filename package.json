@@ -1,16 +1,16 @@
 {
-  "name": "@keyz/ng-atmhotspot-bank",
+  "name": "@codekeyz/ng-atmbank",
   "version": "1.0.1",
   "description": "This is an Angular Wrapper around the Hover Software Solutions Banks & ATM's Hotspot API",
   "author": "Precious Keyz",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codekeyz/-atmhotspot-bank.git"
+    "url": "git+https://github.com/codekeyz/ng-atmbank.git"
   },
   "bugs": {
-    "url": "https://github.com/codekeyz/-atmhotspot-bank/issues"
+    "url": "https://github.com/codekeyz/ng-atmbank/issues"
   },
-  "homepage": "https://github.com/codekeyz/-atmhotspot-bank",
+  "homepage": "https://github.com/codekeyz/ng-atmbank",
   "keywords": [
     "angular",
     "typescript",
@@ -25,8 +25,5 @@
     "rxjs": "6.3.3",
     "@auth0/angular-jwt": "^2.1.0"
   },
-  "main": "karma.conf.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "main": "karma.conf.js"
 }
