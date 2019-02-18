@@ -41,6 +41,8 @@ export interface BranchData {
   town: string;
   total_managers: number;
   total_atms: number;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface ATMData {
@@ -48,6 +50,7 @@ export interface ATMData {
   name: string;
   status: number;
   city: string;
+  branch: string;
   coordinate: Coordinate;
   created_at: Date;
   updated_at: Date;
