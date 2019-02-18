@@ -1,6 +1,6 @@
 {
   "name": "@keyz/ng-atmhotspot-bank",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is an Angular Wrapper around the Hover Software Solutions Banks & ATM's Hotspot API",
   "author": "Precious Keyz",
   "repository": {
