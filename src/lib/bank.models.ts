@@ -67,6 +67,11 @@ export interface ManagerData {
   email: string;
   created_at: Date;
   updated_at: Date;
+  branchData: {
+    name: string;
+    city: string;
+    town: string;
+  };
 }
 
 export interface PlanData {
